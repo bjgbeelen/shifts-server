@@ -19,10 +19,10 @@ trait CalendarViewMarshalling extends DefaultJsonProtocol {
     ))
   }
 
-  implicit object WeekFormat extends RootJsonFormat[Week] {
-    def read(json: JsValue) = deserializationError(s"Cannot deserialize Week: invalid input. Raw input: " + json.compactPrint)
+  implicit object WeekFormat extends RootJsonFormat[PartialWeek] {
+    def read(json: JsValue) = deserializationError(s"Cannot deserialize PartialWeek: invalid input. Raw input: " + json.compactPrint)
 
-    def write(item: Week) = JsObject(Map(
+    def write(item: PartialWeek) = JsObject(Map(
       "week" -> item.number.toJson,
       "days" -> item.days.toJson
     ))

@@ -31,7 +31,7 @@ package object calendar {
     override lazy val toString = s"${number}"
   }
 
-  case class Month(number: MonthNumber, parent: () ⇒ Year, children: Seq[Week]) extends CalendarNode[Week]
+  case class Month(number: MonthNumber, parent: () ⇒ Year, children: Seq[PartialWeek]) extends CalendarNode[PartialWeek]
       with NeighbourSupport[Month, Year] {
     def weeks = children
     def year = parent()
@@ -44,8 +44,8 @@ package object calendar {
     val shortNames = Seq("_", "Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")
   }
 
-  case class Week(number: WeekNumber, parent: () ⇒ Month, children: Seq[Day]) extends CalendarNode[Day]
-      with NeighbourSupport[Week, Month] {
+  case class PartialWeek(number: WeekNumber, parent: () ⇒ Month, children: Seq[Day]) extends CalendarNode[Day]
+      with NeighbourSupport[PartialWeek, Month] {
     def month = parent()
     def year: Year = previous.fold(month.year) {
       case week if week.number == number && month.number == 1 ⇒ month.year.previous.get
@@ -68,7 +68,7 @@ package object calendar {
     def apply(date: String) = new DateTime(date)
   }
 
-  case class Day(label: String, number: DayNumber, dayOfWeek: DayOfWeekNumber, parent: () ⇒ Week) extends NeighbourSupport[Day, Week] {
+  case class Day(label: String, number: DayNumber, dayOfWeek: DayOfWeekNumber, parent: () ⇒ PartialWeek) extends NeighbourSupport[Day, PartialWeek] {
     def week = parent()
     def month = week.month
     def year = month.year

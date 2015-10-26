@@ -9,7 +9,7 @@ case class CalendarView(name: String, from: DateTime, to: DateTime, children: Se
   def months = years.foldLeft(Seq[Month]()) {
     case (months, year) ⇒ months ++ year.months
   }
-  def weeks = months.foldLeft(Seq[Week]()) {
+  def weeks = months.foldLeft(Seq[PartialWeek]()) {
     case (weeks, month) ⇒ weeks ++ month.weeks
   }
   def filter(filters: Seq[DaySelection]) = filters.foldLeft(days) {
@@ -51,8 +51,8 @@ object CalendarView {
       lazy val year = Year(yearNumber, () ⇒ calendarView, months)
       lazy val months: Seq[Month] = calendar(yearNumber).keys.toList.sorted.map { monthNumber ⇒
         lazy val month = Month(monthNumber, () ⇒ year, weeks)
-        lazy val weeks: Seq[Week] = sortWeeks(calendar(yearNumber)(monthNumber).keys, monthNumber).map { weekNumber ⇒
-          lazy val week = Week(weekNumber, () ⇒ month, days)
+        lazy val weeks: Seq[PartialWeek] = sortWeeks(calendar(yearNumber)(monthNumber).keys, monthNumber).map { weekNumber ⇒
+          lazy val week = PartialWeek(weekNumber, () ⇒ month, days)
           lazy val days: Seq[Day] = calendar(yearNumber)(monthNumber)(weekNumber).map {
             case (day, dayOfWeek) ⇒
               val label = dayLabels.getOrElse(Day.id(yearNumber, monthNumber, day), "")
