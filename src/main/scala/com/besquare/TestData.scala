@@ -82,14 +82,14 @@ object TestData {
     )
     case GP(id, "Ambachtsheer", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 7)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 8)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 8)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 10)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 11)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 10)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
       }.toMap
       case (map, _) ⇒ map
@@ -101,13 +101,13 @@ object TestData {
     case GP(id, "Baars", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 12)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 11)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 5)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 12)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 15)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 16)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 15)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 3)
       }.toMap
       case (map, _) ⇒ map
@@ -124,8 +124,8 @@ object TestData {
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 12)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 11)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 12)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
       }.toMap
       case (map, _) ⇒ map
@@ -141,7 +141,7 @@ object TestData {
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 10)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 11)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 10)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
@@ -154,8 +154,8 @@ object TestData {
     )
     case GP(id, "Dooren, van", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 10)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 9)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 9)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 10)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
@@ -191,8 +191,8 @@ object TestData {
     case GP(id, "Heeden, vd", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 8)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 8)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 7)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
         case Counter(id, "consult", _, _, _) ⇒ (id, 11)
@@ -213,9 +213,9 @@ object TestData {
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 11)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 12)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 11)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
       }.toMap
       case (map, _) ⇒ map
@@ -244,12 +244,12 @@ object TestData {
     )
     case GP(id, "Homa", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 9)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 8)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 8)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 9)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 12)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 11)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 12)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
@@ -280,8 +280,8 @@ object TestData {
     )
     case GP(id, "Marcelis", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 5)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 6)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 6)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 5)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
@@ -298,8 +298,8 @@ object TestData {
     )
     case GP(id, "Nierop, van", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 5)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 6)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 6)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 5)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
@@ -321,8 +321,8 @@ object TestData {
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 8)
-        case Counter(id, "visite", _, _, _)  ⇒ (id, 7)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 7)
+        case Counter(id, "visite", _, _, _)  ⇒ (id, 8)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
       }.toMap
@@ -352,12 +352,12 @@ object TestData {
     )
     case GP(id, "Rens, van", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 9)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 8)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 8)
-        case Counter(id, "nacht", _, _, _)   ⇒ (id, 3)
+        case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 11)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 10)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 10)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 1)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
@@ -370,12 +370,12 @@ object TestData {
     )
     case GP(id, "Rekkers", patients) ⇒ ResourceConstraints(id, desiredNumberOfTasks = counters.foldLeft(Map[Id, Int]()) {
       case (map, Counter(_, "week", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 9)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 8)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 9)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 4)
       }.toMap
       case (map, Counter(_, "weekend", _, _, children)) ⇒ map ++ children.map {
-        case Counter(id, "consult", _, _, _) ⇒ (id, 11)
+        case Counter(id, "consult", _, _, _) ⇒ (id, 12)
         case Counter(id, "visite", _, _, _)  ⇒ (id, 12)
         case Counter(id, "nacht", _, _, _)   ⇒ (id, 2)
         case Counter(id, "feest", _, _, _)   ⇒ (id, 2)
