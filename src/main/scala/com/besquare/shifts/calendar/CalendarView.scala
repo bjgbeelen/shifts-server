@@ -9,9 +9,14 @@ case class CalendarView(name: String, from: DateTime, to: DateTime, children: Se
   def months = years.foldLeft(Seq[Month]()) {
     case (months, year) ⇒ months ++ year.months
   }
-  def weeks = months.foldLeft(Seq[PartialWeek]()) {
+  def partialWeeks: Seq[PartialWeek] = months.foldLeft(Seq[PartialWeek]()) {
     case (weeks, month) ⇒ weeks ++ month.weeks
   }
+  def weeks: Seq[Week] = {
+    val result: List[Seq[(String, PartialWeek)]] = partialWeeks.map(pw ⇒ (pw.id, pw)).groupBy(_._1).toList.map(_._2)
+    result.map(pwSeq ⇒ Week(pwSeq.map(_._2)))
+  }
+
   def filter(filters: Seq[DaySelection]) = filters.foldLeft(days) {
     case (days, daySelection) ⇒ days.filter(daySelection.exec)
   }

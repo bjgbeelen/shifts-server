@@ -57,6 +57,20 @@ package object calendar {
     override lazy val toString = s"Week ${number}, ${year.number}"
   }
 
+  case class Week(number: WeekNumber, year: YearNumber, days: Seq[Day]) {
+    def id = s"$year-$number"
+  }
+
+  case object Week {
+    def apply(partialWeeks: Seq[PartialWeek]): Week = {
+      require(partialWeeks.size > 0 && partialWeeks.map(_.id).toSet.size == 1)
+      val days = partialWeeks.foldLeft(Seq[Day]()) {
+        case (days, partialWeek) ⇒ days ++ partialWeek.days
+      }
+      Week(partialWeeks.head.number, partialWeeks.head.year.number, days)
+    }
+  }
+
   case object Day {
     val longDayOfWeekNames = Seq("_", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag")
     val shortDayOfWeekNames = Seq("_", "Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo")
